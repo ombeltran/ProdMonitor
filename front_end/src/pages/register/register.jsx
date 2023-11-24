@@ -1,11 +1,13 @@
 import './register.css'
 import { Card, Button } from '../../components';
 import { useForm } from "react-hook-form";
-import { createReport } from "../../api/report.api";
+// import { createReport } from "../../api/report.api";
+import { useReport } from "../../context/ReportContext";
 import { useState } from 'react';
 
 const Register = () => {
 
+    const { createReport } = useReport();
     const { register, handleSubmit, reset: resetForm } = useForm();
     const [selectedTypeOption, setSelectedTypeOption] = useState('');
     const [selectedCategoryOption, setSelectedCategoryOption] = useState('');

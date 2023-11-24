@@ -1,77 +1,97 @@
-import React from "react";
+import DataTable from "react-data-table-component";
 import './reports.css';
-import { Card, Button } from "../../components";
+import { Card } from "../../components";
+import { useReport } from "../../context/ReportContext";
+import { useEffect, useState } from "react";
 
 const Reports = () => {
+    const { report, loadReports } = useReport();
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        loadReports();
+    }, []);
+
+    const columns = [
+        {
+            name: "Type",
+            selector: row => row.type,
+            sortable: true
+        },
+        {
+            name: "Model",
+            selector: row => row.model,
+            sortable: true
+        },
+        {
+            name: "Serial_number",
+            selector: row => row.serial_number,
+            sortable: true
+        },
+        {
+            name: "Category",
+            selector: row => row.category,
+            sortable: true
+        },
+        {
+            name: "Comment",
+            selector: row => row.comment,
+            sortable: true
+        },
+        {
+            name: "Date",
+            selector: row => row.date,
+            sortable: true
+        },
+    ];
+
+    const [filterText, setFilterText] = useState('');
+
+    const filteredData = report.filter(row => {
+        return Object.values(row).some(value =>
+            value.toString().toLowerCase().includes(filterText.toLowerCase())
+        );
+    });
+
+    const tableCustomStyles = {
+        headCells: {
+          style: {
+            fontSize: '15px',
+            fontWeight: 'bold',
+            color: 'white',
+            backgroundColor: 'black',
+          },
+        },
+      }
+
     return (
         <div className="reportPadre">
             <Card>
                 <div className="reports">
-                    <form className="Report_form">
+                    <div>
                         <h2>Reports</h2>
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            value={filterText}
+                            onChange={(e) => setFilterText(e.target.value)}
+                        />
+                    </div>
 
-                        <label>User</label>
-                        <select className='user' required>
-                            <option value="select user" selected>Select user</option>
-                            <option value="user 1" >User 1</option>
-                            <option value="user 2">User 2</option>
-                            <option value="user 3">User 3</option>
-                        </select>
-
-                        <Button>Search</Button>
-                    </form>
-
-                    <table border="1">
-                        <tr>
-                            <th>User</th>
-                            <th>Type</th>
-                            <th>Model</th>
-                            <th>Serial number</th>
-                            <th>Category</th>
-                            <th>Comment</th>
-                            <th>Date</th>
-                        </tr>
-                        <tr>
-                            <td>User 1</td>
-                            <td>Monitor</td>
-                            <td>HP 27df22</td>
-                            <td>785GBV123XSE</td>
-                            <td>Damaged</td>
-                            <td>This is a proof line 1</td>
-                            <td>Octuber-12-2023</td>
-                        </tr>
-                        <tr>
-                            <td>User 1</td>
-                            <td>Televisor</td>
-                            <td>SAM QN65LS03AA</td>
-                            <td>681RTE930HJDF</td>
-                            <td>Refurbished</td>
-                            <td>This is a proof line 2</td>
-                            <td>Octuber-12-2023</td>
-                        </tr>
-                        <tr>
-                            <td>User 1</td>
-                            <td>Televisor</td>
-                            <td>SAM QN65LS03AA</td>
-                            <td>3435HJK345JJ</td>
-                            <td>Refurbished</td>
-                            <td>This is a proof line 3</td>
-                            <td>Octuber-12-2023</td>
-                        </tr>
-                        <tr>
-                            <td>User 1</td>
-                            <td>Monitor</td>
-                            <td>LG 32GN550-B</td>
-                            <td>123ABC456DEF</td>
-                            <td>Open box</td>
-                            <td>This is a proof line 4</td>
-                            <td>Octuber-12-2023</td>
-                        </tr>
-                    </table>
+                    <DataTable
+                        columns={columns}
+                        data={filteredData}
+                        selectableRows
+                        fixedHeader
+                        fixedHeaderScrollHeight="400px"
+                        pagination
+                        dense
+                        customStyles={tableCustomStyles}
+                    />
                 </div>
             </Card>
         </div>
-    )
+    );
 }
 
 export default Reports;

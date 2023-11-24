@@ -43,6 +43,19 @@
 li {
   transition: transform 0.3s;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+/* Css for name user on nav bar */
+.userName{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  color: white;
 }
 
 li:hover {
@@ -61,6 +74,9 @@ li:hover {
 /* Responsive */
 
 @media screen and (max-width: 550px) {
+  .navigation{
+    z-index: 3;
+  }
 
   .open_menu,
   .close {

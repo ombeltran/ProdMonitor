@@ -1,4 +1,5 @@
 import { BiLogIn } from "react-icons/bi";
+import { LuPenLine } from "react-icons/lu";
 
 export const publicRoutes = [
     {
@@ -8,7 +9,8 @@ export const publicRoutes = [
     },
     {
         name: "Signup",
-        path: "/signup"
+        path: "/signup",
+        icon: <LuPenLine />
     },
 ]
 

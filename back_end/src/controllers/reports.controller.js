@@ -2,7 +2,6 @@ import {pool} from '../db.js';
 
 export const getAllReports = async (req, res) => {   
     const result = await pool.query('SELECT * FROM production WHERE user_id = $1', [req.userId]);
-    console.log(result);
     return res.json(result.rows)
 };
 

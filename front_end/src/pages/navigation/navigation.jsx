@@ -4,10 +4,12 @@ import './navigation.css';
 import moreImage from './more.png';
 import { publicRoutes, privateRoutes } from "./listNavigation";
 import { useAuth } from '../../context/AuthContext';
+import { FaRegUser } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
 
 const Navigation = () => {
 
-    const { isAuth, logout } = useAuth();
+    const { isAuth, logout, user } = useAuth();
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleOpen = () => {
@@ -46,12 +48,18 @@ const Navigation = () => {
                                         logout();
                                     }}
                                 >
+                                    <MdLogout />
                                     Logout
                                 </li>
 
+                                <p className='userName'>
+                                    <FaRegUser />
+                                    {user.full_name}
+                                </p>
                             </>
-                            : publicRoutes.map(({ path, name }) => (
+                            : publicRoutes.map(({ path, name, icon }) => (
                                 <li key={path}>
+                                    {icon}
                                     <Link to={path} >{name}</Link>
                                 </li>
                             ))
