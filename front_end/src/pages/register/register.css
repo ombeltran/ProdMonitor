@@ -1,0 +1,44 @@
+.registerPadre{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100vh; 
+    width: auto;
+}
+
+.register{
+    display: flex;
+    /* padding: 1% 0 2% 30%; */
+    height: 60vh;
+    width: 34rem;
+}
+
+.Register_form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.Register_form h2{
+    margin-bottom: 3rem;
+}
+
+.Register_form h2, .button {
+    grid-column: 1 / 3; /* Esto hará que el h2 ocupe dos columnas */
+    text-align: center;
+}
+
+.button{
+    display: flex;
+    align-items: flex-start;
+}
+
+.form_column label,
+.form_column input,
+.form_column select,
+.form_column textarea {
+    width: 17rem; /* Ancho completo para los elementos en la columna */
+}
+
+textarea{
+    border-radius: 5px;
+}

@@ -1,0 +1,34 @@
+.register{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    right: 17%;
+    align-items: center;
+    top: 12rem;
+    height: 80px;
+    z-index: -1;
+}
+
+.Register_form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.Register_form h2, .button {
+    grid-column: 1 / 3; /* Esto hará que el h2 ocupe dos columnas */
+    text-align: center;
+}
+
+.form_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_column label,
+.form_column input,
+.form_column select,
+.form_column textarea {
+    width: 17rem; /* Ancho completo para los elementos en la columna */
+}
+
