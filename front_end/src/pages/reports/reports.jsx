@@ -1,49 +1,16 @@
-import DataTable from "react-data-table-component";
 import './reports.css';
 import { Card } from "../../components";
 import { useReport } from "../../context/ReportContext";
 import { useEffect, useState } from "react";
+import { columns } from "./columns";
+import { Table } from "../../components";
 
 const Reports = () => {
     const { report, loadReports } = useReport();
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         loadReports();
     }, []);
-
-    const columns = [
-        {
-            name: "Type",
-            selector: row => row.type,
-            sortable: true
-        },
-        {
-            name: "Model",
-            selector: row => row.model,
-            sortable: true
-        },
-        {
-            name: "Serial_number",
-            selector: row => row.serial_number,
-            sortable: true
-        },
-        {
-            name: "Category",
-            selector: row => row.category,
-            sortable: true
-        },
-        {
-            name: "Comment",
-            selector: row => row.comment,
-            sortable: true
-        },
-        {
-            name: "Date",
-            selector: row => row.date,
-            sortable: true
-        },
-    ];
 
     const [filterText, setFilterText] = useState('');
 
@@ -53,23 +20,12 @@ const Reports = () => {
         );
     });
 
-    const tableCustomStyles = {
-        headCells: {
-          style: {
-            fontSize: '15px',
-            fontWeight: 'bold',
-            color: 'white',
-            backgroundColor: 'black',
-          },
-        },
-      }
-
     return (
         <div className="reportPadre">
             <Card>
                 <div className="reports">
                     <div>
-                        <h2>Reports</h2>
+                        <h2>Report</h2>
                         <input
                             type="text"
                             placeholder="Search..."
@@ -78,15 +34,10 @@ const Reports = () => {
                         />
                     </div>
 
-                    <DataTable
+                    <Table
                         columns={columns}
                         data={filteredData}
-                        selectableRows
-                        fixedHeader
-                        fixedHeaderScrollHeight="400px"
-                        pagination
-                        dense
-                        customStyles={tableCustomStyles}
+                        fixedHeaderScrollHeight="300px"
                     />
                 </div>
             </Card>

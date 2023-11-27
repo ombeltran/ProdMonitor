@@ -4,12 +4,14 @@ import cookieParser from 'cookie-parser';
 import reportsRoutes from './routes/reports.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import cors from 'cors';
+import { pool } from "./db.js";
+import { ORIGIN } from './config.js';
 
 const app = express();
 
 // Middlewares
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ORIGIN,
     credentials: true
 }));
 app.use(morgan('dev'));
@@ -19,6 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.get('/api', (req, res) => res.json({message: "Welcome to my API"}));
+app.get('/api/ping', async (req, res) => {
+    const result = pool.query('SELECT NOW()');
+    return res.json((await result).rows[0]);
+});
 app.use('/api', reportsRoutes);
 app.use('/api', authRoutes);
 
