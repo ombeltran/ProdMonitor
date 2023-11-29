@@ -19,19 +19,23 @@ export function AuthProvider({ children }) {
 
     const login = async (data) => {
         try {
-            const res = await axios.post('/login', data, {
-            });
-            setUser(res.data);
-            setIsAuth(true);
-
-            return res.data;
+            const res = await axios.post('/login', data);
+            if (res && res.data) {
+                setUser(res.data);
+                setIsAuth(true);
+                return res.data;
+            } else {
+                setErrors(['Unexpected response format']);
+            }
         } catch (error) {
             if (Array.isArray(error.response.data)) {
-                return setErrors(error.response.data);
+                setErrors(error.response.data);
+            } else {
+                setErrors([error.response.data.message]);
             }
-            setErrors([error.response.data.message]);
         }
     }
+    
 
     const signup = async (data) => {
         try {
