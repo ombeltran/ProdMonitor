@@ -9,6 +9,9 @@ import { ORIGIN } from './config.js';
 
 const app = express();
 
+//Statics file
+app.use(express.static('public'));
+
 // Middlewares
 app.use(cors({
     origin: ORIGIN,
