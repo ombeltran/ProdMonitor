@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
   const { register, handleSubmit } = useForm();
   const { signup, errors } = useAuth();
+  console.log(errors);
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
