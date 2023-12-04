@@ -43,8 +43,8 @@ const Register = () => {
                                 required
                             >
                                 <option value="" disabled >Select type</option>
-                                <option value="televisor">Televisor</option>
-                                <option value="monitor">Monitor</option>
+                                <option value="Televisor">Televisor</option>
+                                <option value="Monitor">Monitor</option>
                             </select>
                         </div>
 
@@ -79,11 +79,11 @@ const Register = () => {
                                 required
                                 >
                                 <option value="" disabled>Select category</option>
-                                <option value="open box">Open box</option>
-                                <option value="refurbished">Refurbished</option>
-                                <option value="damaged">Damaged</option>
-                                <option value="defective">Defective</option>
-                                <option value="crack">Crack</option>
+                                <option value="Open box">Open box</option>
+                                <option value="Refurbished">Refurbished</option>
+                                <option value="Damaged">Damaged</option>
+                                <option value="Defective">Defective</option>
+                                <option value="Crack">Crack</option>
                             </select>
                         </div>
 

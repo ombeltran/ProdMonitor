@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ProdMonitor/build/static/css/main.3e53b119.css",
-    "main.js": "/ProdMonitor/build/static/js/main.3c9c709e.js",
+    "main.css": "/ProdMonitor/build/static/css/main.44d182e7.css",
+    "main.js": "/ProdMonitor/build/static/js/main.40835e3e.js",
     "index.html": "/ProdMonitor/build/index.html",
-    "main.3e53b119.css.map": "/ProdMonitor/build/static/css/main.3e53b119.css.map",
-    "main.3c9c709e.js.map": "/ProdMonitor/build/static/js/main.3c9c709e.js.map"
+    "main.44d182e7.css.map": "/ProdMonitor/build/static/css/main.44d182e7.css.map",
+    "main.40835e3e.js.map": "/ProdMonitor/build/static/js/main.40835e3e.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e53b119.css",
-    "static/js/main.3c9c709e.js"
+    "static/css/main.44d182e7.css",
+    "static/js/main.40835e3e.js"
   ]
 }

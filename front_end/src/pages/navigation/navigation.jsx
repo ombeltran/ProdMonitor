@@ -22,6 +22,7 @@ const Navigation = () => {
 
     return (
         <div className='navigation'>
+            <h2>Prod-Monitor</h2>
             <div className="open_menu" onClick={handleOpen}>
                 <img src={moreImage} alt="More" />
             </div>
@@ -38,7 +39,7 @@ const Navigation = () => {
                         isAuth ?
                             <>
                                 {privateRoutes.map(({ path, name }) => (
-                                    <li key={path}>
+                                    <li key={path} onClick={handleClose}>
                                         <Link to={path} >{name}</Link>
                                     </li>
                                 ))}
@@ -46,6 +47,7 @@ const Navigation = () => {
                                 <li
                                     onClick={() => {
                                         logout();
+                                        handleClose();
                                     }}
                                 >
                                     <MdLogout />
@@ -58,7 +60,7 @@ const Navigation = () => {
                                 </p>
                             </>
                             : publicRoutes.map(({ path, name, icon }) => (
-                                <li key={path}>
+                                <li key={path} onClick={handleClose}>
                                     {icon}
                                     <Link to={path} >{name}</Link>
                                 </li>
