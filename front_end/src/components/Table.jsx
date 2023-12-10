@@ -1,4 +1,5 @@
 import DataTable from "react-data-table-component";
+import "./style.css";
 
 export const Table = ( props ) => {
     
@@ -27,4 +28,3 @@ export const Table = ( props ) => {
         </div>
     );
 }
-

@@ -34,7 +34,7 @@ const Register = () => {
                                 id='type'
                                 name='type'
                                 className='select'
-                                autoFocus                                
+                                autoFocus
                                 {...register('type', {
                                     required: true,
                                 })}
@@ -72,12 +72,12 @@ const Register = () => {
                         <div className="form_column">
                             <label htmlFor='category'>Category</label>
                             <select
-                                className='select'                                
-                                {...register('category')} 
+                                className='select'
+                                {...register('category')}
                                 value={selectedCategoryOption}
                                 onChange={(e) => setSelectedCategoryOption(e.target.value)}
                                 required
-                                >
+                            >
                                 <option value="" disabled>Select category</option>
                                 <option value="Open box">Open box</option>
                                 <option value="Refurbished">Refurbished</option>
