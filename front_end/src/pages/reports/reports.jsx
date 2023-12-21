@@ -1,9 +1,9 @@
-import './reports.css';
-import { Card } from "../../components";
+import React, { useEffect, useState } from "react";
+import { Card, Table } from "../../components";
 import { useReport } from "../../context/ReportContext";
-import { useEffect, useState } from "react";
+import { format, parseISO } from 'date-fns';
 import { columns } from "./columns";
-import { Table } from "../../components";
+import './reports.css';
 
 const Reports = () => {
     const { report, loadReports } = useReport();
@@ -14,7 +14,16 @@ const Reports = () => {
 
     const [filterText, setFilterText] = useState('');
 
-    const filteredData = report.filter(row => {
+    const filteredData = report.map(row => {
+        return Object.entries(row).reduce((acc, [key, value]) => {
+            if (key === "date" && typeof value === 'string') {
+                acc[key] = format(parseISO(value), 'MM-dd-yyyy');
+            } else {
+                acc[key] = value;
+            }
+            return acc;
+        }, {});
+    }).filter(row => {
         return Object.values(row).some(value =>
             value.toString().toLowerCase().includes(filterText.toLowerCase())
         );

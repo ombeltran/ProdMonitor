@@ -26,7 +26,7 @@ export const columns = [
     {
         name: "Comment",
         selector: row => row.comment,
-        width: "200px",
+        width: "180px",
         cell: (row) => (
             <div>
                 {row.comment.split('\n').map((line, index) => (

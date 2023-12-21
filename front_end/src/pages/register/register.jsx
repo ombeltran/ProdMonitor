@@ -43,7 +43,7 @@ const Register = () => {
                                 required
                             >
                                 <option value="" disabled >Select type</option>
-                                <option value="Televisor">Televisor</option>
+                                <option value="Televisor">TV</option>
                                 <option value="Monitor">Monitor</option>
                             </select>
                         </div>
